@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MindOrb</string>
+    <string name="title_activity_main">MindOrb</string>
+    <string name="package_name">com.mindorb.app</string>
+    <string name="custom_url_scheme">com.mindorb.app</string>
+    <string name="facebook_app_id">1320559883352448</string>
+    <string name="facebook_client_token">c677e43910daa25b740966be097e1c72</string>
+    <string name="fb_login_protocol_scheme">fb1320559883352448</string>
+</resources>

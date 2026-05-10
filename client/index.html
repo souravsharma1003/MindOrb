@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Critical for Capacitor: disables over-scroll bounce on iOS,
+         prevents text size adjustment, locks to device width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,
+                   viewport-fit=cover, user-scalable=no" />
+
+  <!-- Prevents iOS from adding phone/email link styling -->
+  <meta name="format-detection" content="telephone=no" />
+  <!-- Makes the app feel native on iOS/Android home screen -->
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>MindOrb</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+  <script>
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId: '1320559883352448',   // paste your App ID here directly
+        cookie: true,
+        xfbml: true,
+        version: 'v19.0'
+      });
+    };
+  </script>
+  <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+</body>
+
+</html>

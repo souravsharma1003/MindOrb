@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "845632562980",
+    "project_id": "mindorb-495506",
+    "storage_bucket": "mindorb-495506.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845632562980:android:d56133f1f2130187d435b1",
+        "android_client_info": {
+          "package_name": "com.mindorb.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845632562980-9coh6fklbhsfvkgq7bsb74k5cd4ljdmv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mindorb.app",
+            "certificate_hash": "8522e3089f2b2a84c784ead5bd01be2a66ff51ad"
+          }
+        },
+        {
+          "client_id": "845632562980-tmsv3tm2e15mhrf922j4e5pn09jc6tvb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGj0RovZq03Wa3ra9c-m-Wo2dohACfWr8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "845632562980-tmsv3tm2e15mhrf922j4e5pn09jc6tvb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
