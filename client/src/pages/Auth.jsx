@@ -259,6 +259,7 @@ export default function Auth() {
     onNonOAuthError: (err) => {
       // 'popup_closed'         — user cancelled, stay silent
       // 'popup_failed_to_open' — browser blocked the popup, tell the user
+        console.log('⚠️ Google onNonOAuthError:', err.type, err)  // ← add this
       if (err.type === 'popup_failed_to_open') {
         toast.error('Pop-up was blocked — please allow pop-ups for this site')
       }
