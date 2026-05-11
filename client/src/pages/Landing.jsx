@@ -5,15 +5,15 @@ import { useAuth } from '../context/AuthContext'
 // ── Emotion colors for orb demo ─────────────────────────────────
 const EMOTION_SEQUENCE = [
   { emotion: 'anticipation', c1: '#ddd6fe', c2: '#7c6af7', c3: '#5b21b6', glow: 'rgba(124,106,247,0.5)', word: 'growth' },
-  { emotion: 'joy',          c1: '#fde68a', c2: '#f59e0b', c3: '#d97706', glow: 'rgba(251,191,36,0.5)',  word: 'joy'    },
-  { emotion: 'trust',        c1: '#6ee7b7', c2: '#10b981', c3: '#059669', glow: 'rgba(52,211,153,0.5)',  word: 'calm'   },
-  { emotion: 'surprise',     c1: '#a5f3fc', c2: '#06b6d4', c3: '#0e7490', glow: 'rgba(6,182,212,0.5)',   word: 'wonder' },
-  { emotion: 'anticipation', c1: '#ddd6fe', c2: '#7c6af7', c3: '#5b21b6', glow: 'rgba(124,106,247,0.5)', word: 'dream'  },
+  { emotion: 'joy', c1: '#fde68a', c2: '#f59e0b', c3: '#d97706', glow: 'rgba(251,191,36,0.5)', word: 'joy' },
+  { emotion: 'trust', c1: '#6ee7b7', c2: '#10b981', c3: '#059669', glow: 'rgba(52,211,153,0.5)', word: 'calm' },
+  { emotion: 'surprise', c1: '#a5f3fc', c2: '#06b6d4', c3: '#0e7490', glow: 'rgba(6,182,212,0.5)', word: 'wonder' },
+  { emotion: 'anticipation', c1: '#ddd6fe', c2: '#7c6af7', c3: '#5b21b6', glow: 'rgba(124,106,247,0.5)', word: 'dream' },
 ]
 
 // ── Hero Orb ─────────────────────────────────────────────────────
 function HeroOrb({ size = 220 }) {
-  const [idx, setIdx]        = useState(0)
+  const [idx, setIdx] = useState(0)
   const [reacting, setReact] = useState(false)
 
   useEffect(() => {
@@ -27,12 +27,14 @@ function HeroOrb({ size = 220 }) {
     return () => clearInterval(iv)
   }, [])
 
-  const e     = EMOTION_SEQUENCE[idx]
+  const e = EMOTION_SEQUENCE[idx]
   const scale = reacting ? 1.15 : 1
 
   return (
-    <div style={{ position: 'relative', width: size, height: size,
-      display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{
+      position: 'relative', width: size, height: size,
+      display: 'flex', alignItems: 'center', justifyContent: 'center'
+    }}>
       <div style={{
         position: 'absolute', inset: -24, borderRadius: '50%',
         border: `1px solid ${e.c2}18`,
@@ -81,9 +83,9 @@ function HeroOrb({ size = 220 }) {
 
 // ── Navbar ───────────────────────────────────────────────────────
 function Navbar({ user, onLogin, onSignup, onDashboard }) {
-  const [scrolled,     setScrolled]     = useState(false)
-  const [menuOpen,     setMenuOpen]     = useState(false)
-  const [isMobile,     setIsMobile]     = useState(window.innerWidth < 768)
+  const [scrolled, setScrolled] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
@@ -159,8 +161,10 @@ function Navbar({ user, onLogin, onSignup, onDashboard }) {
                   }}>
                     {user.name?.[0]?.toUpperCase() ?? '?'}
                   </div>
-                  <span style={{ fontSize: 13, color: 'var(--color-text-2)',
-                    fontFamily: 'var(--font-display)', fontWeight: 500 }}>
+                  <span style={{
+                    fontSize: 13, color: 'var(--color-text-2)',
+                    fontFamily: 'var(--font-display)', fontWeight: 500
+                  }}>
                     {user.name.split(' ')[0]}
                   </span>
                 </div>
@@ -172,7 +176,7 @@ function Navbar({ user, onLogin, onSignup, onDashboard }) {
                   transition: 'opacity 0.15s, box-shadow 0.2s',
                 }}
                   onMouseEnter={e => { e.currentTarget.style.opacity = '0.9'; e.currentTarget.style.boxShadow = '0 0 30px rgba(124,106,247,0.5)' }}
-                  onMouseLeave={e => { e.currentTarget.style.opacity = '1';   e.currentTarget.style.boxShadow = '0 0 20px rgba(124,106,247,0.35)' }}
+                  onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.boxShadow = '0 0 20px rgba(124,106,247,0.35)' }}
                 >
                   Dashboard →
                 </button>
@@ -198,7 +202,7 @@ function Navbar({ user, onLogin, onSignup, onDashboard }) {
                   transition: 'opacity 0.15s, box-shadow 0.2s',
                 }}
                   onMouseEnter={e => { e.currentTarget.style.opacity = '0.9'; e.currentTarget.style.boxShadow = '0 0 30px rgba(124,106,247,0.5)' }}
-                  onMouseLeave={e => { e.currentTarget.style.opacity = '1';   e.currentTarget.style.boxShadow = '0 0 20px rgba(124,106,247,0.35)' }}
+                  onMouseLeave={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.boxShadow = '0 0 20px rgba(124,106,247,0.35)' }}
                 >
                   Get started
                 </button>
@@ -223,8 +227,8 @@ function Navbar({ user, onLogin, onSignup, onDashboard }) {
                 transition: 'all 0.3s ease',
                 transform: menuOpen
                   ? i === 0 ? 'rotate(45deg) translate(5px, 5px)'
-                  : i === 1 ? 'opacity: 0'
-                  : 'rotate(-45deg) translate(5px, -5px)'
+                    : i === 1 ? 'opacity: 0'
+                      : 'rotate(-45deg) translate(5px, -5px)'
                   : 'none',
                 opacity: menuOpen && i === 1 ? 0 : 1,
               }} />
@@ -266,6 +270,20 @@ function Navbar({ user, onLogin, onSignup, onDashboard }) {
               </button>
             ) : (
               <>
+                <a href="https://github.com/souravsharma1003/MindOrb/releases/latest/download/mindorb.apk"
+                  onClick={() => setMenuOpen(false)}
+                  style={{
+                    display: 'block', padding: '12px', borderRadius: 10, textAlign: 'center',
+                    background: 'rgba(52,211,153,0.1)',
+                    border: '1px solid rgba(52,211,153,0.25)',
+                    color: '#34d399',
+                    fontSize: 15, fontWeight: 600,
+                    fontFamily: 'var(--font-display)',
+                    textDecoration: 'none',
+                  }}
+                >
+                  Download Android App
+                </a>
                 <button onClick={() => { onSignup(); setMenuOpen(false) }} style={{
                   padding: '12px', borderRadius: 10, border: 'none', cursor: 'pointer',
                   background: 'var(--color-accent)', color: '#fff',
@@ -357,8 +375,10 @@ function FeatureCard({ icon, title, desc, accentColor, delay }) {
           style={{ fontSize: 16, color: 'var(--color-text-1)', marginBottom: 8 }}>
           {title}
         </div>
-        <p style={{ fontSize: 14, color: 'var(--color-text-2)',
-          lineHeight: 1.65, margin: 0 }}>
+        <p style={{
+          fontSize: 14, color: 'var(--color-text-2)',
+          lineHeight: 1.65, margin: 0
+        }}>
           {desc}
         </p>
       </div>
@@ -396,8 +416,10 @@ function StepCard({ number, title, desc, delay }) {
             style={{ fontSize: 15, color: 'var(--color-text-1)', marginBottom: 6 }}>
             {title}
           </div>
-          <p style={{ fontSize: 13.5, color: 'var(--color-text-2)',
-            lineHeight: 1.65, margin: 0 }}>
+          <p style={{
+            fontSize: 13.5, color: 'var(--color-text-2)',
+            lineHeight: 1.65, margin: 0
+          }}>
             {desc}
           </p>
         </div>
@@ -409,15 +431,15 @@ function StepCard({ number, title, desc, delay }) {
 // ── Word ticker ──────────────────────────────────────────────────
 function WordTicker() {
   const WORDS = [
-    { w: 'growth',    s: 'positive' }, { w: 'calm',      s: 'positive' },
-    { w: 'clarity',   s: 'positive' }, { w: 'peace',     s: 'positive' },
-    { w: 'tired',     s: 'negative' }, { w: 'joy',       s: 'positive' },
-    { w: 'pressure',  s: 'negative' }, { w: 'hope',      s: 'positive' },
-    { w: 'focus',     s: 'positive' }, { w: 'wonder',    s: 'positive' },
-    { w: 'grateful',  s: 'positive' }, { w: 'stress',    s: 'negative' },
-    { w: 'serene',    s: 'positive' }, { w: 'dream',     s: 'positive' },
-    { w: 'alive',     s: 'positive' }, { w: 'heavy',     s: 'negative' },
-    { w: 'bright',    s: 'positive' }, { w: 'free',      s: 'positive' },
+    { w: 'growth', s: 'positive' }, { w: 'calm', s: 'positive' },
+    { w: 'clarity', s: 'positive' }, { w: 'peace', s: 'positive' },
+    { w: 'tired', s: 'negative' }, { w: 'joy', s: 'positive' },
+    { w: 'pressure', s: 'negative' }, { w: 'hope', s: 'positive' },
+    { w: 'focus', s: 'positive' }, { w: 'wonder', s: 'positive' },
+    { w: 'grateful', s: 'positive' }, { w: 'stress', s: 'negative' },
+    { w: 'serene', s: 'positive' }, { w: 'dream', s: 'positive' },
+    { w: 'alive', s: 'positive' }, { w: 'heavy', s: 'negative' },
+    { w: 'bright', s: 'positive' }, { w: 'free', s: 'positive' },
   ]
   const doubled = [...WORDS, ...WORDS]
 
@@ -461,9 +483,9 @@ function WordTicker() {
    MAIN LANDING PAGE
 ══════════════════════════════════════════════════════════════ */
 export default function Landing() {
-  const navigate    = useNavigate()
-  const { user }    = useAuth()
-  const goAuth      = (mode = 'signup') => navigate('/auth', { state: { mode } })
+  const navigate = useNavigate()
+  const { user } = useAuth()
+  const goAuth = (mode = 'signup') => navigate('/auth', { state: { mode } })
   const goDashboard = () => navigate('/dashboard')
 
   return (
@@ -583,7 +605,7 @@ export default function Landing() {
               display: 'flex', alignItems: 'center', gap: 8,
             }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 40px rgba(124,106,247,0.5)' }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)';    e.currentTarget.style.boxShadow = '0 0 32px rgba(124,106,247,0.4)' }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 0 32px rgba(124,106,247,0.4)' }}
             >
               Go to your dashboard <span style={{ fontSize: 16 }}>→</span>
             </button>
@@ -599,7 +621,7 @@ export default function Landing() {
                 display: 'flex', alignItems: 'center', gap: 8,
               }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 40px rgba(124,106,247,0.5)' }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)';    e.currentTarget.style.boxShadow = '0 0 32px rgba(124,106,247,0.4)' }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 0 32px rgba(124,106,247,0.4)' }}
               >
                 Begin your journey <span style={{ fontSize: 16 }}>→</span>
               </button>
@@ -612,7 +634,7 @@ export default function Landing() {
                 transition: 'all 0.2s ease',
               }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'; e.currentTarget.style.color = 'var(--color-text-1)' }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--color-border-2)';  e.currentTarget.style.color = 'var(--color-text-2)' }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--color-border-2)'; e.currentTarget.style.color = 'var(--color-text-2)' }}
               >
                 Sign in
               </button>
@@ -622,11 +644,15 @@ export default function Landing() {
 
         {/* Scroll hint */}
         <div className="animate-fade-up delay-500"
-          style={{ marginTop: 64, display: 'flex', flexDirection: 'column',
-            alignItems: 'center', gap: 8 }}>
-          <div style={{ fontSize: 11, color: 'var(--color-text-3)',
+          style={{
+            marginTop: 64, display: 'flex', flexDirection: 'column',
+            alignItems: 'center', gap: 8
+          }}>
+          <div style={{
+            fontSize: 11, color: 'var(--color-text-3)',
             letterSpacing: '0.08em', textTransform: 'uppercase',
-            fontFamily: 'var(--font-display)', fontWeight: 600 }}>
+            fontFamily: 'var(--font-display)', fontWeight: 600
+          }}>
             Scroll to explore
           </div>
           <div style={{
@@ -661,9 +687,11 @@ export default function Landing() {
               How it works
             </div>
             <h2 className="font-display font-bold"
-              style={{ fontSize: 'clamp(28px, 4vw, 48px)', letterSpacing: '-0.025em',
+              style={{
+                fontSize: 'clamp(28px, 4vw, 48px)', letterSpacing: '-0.025em',
                 color: 'var(--color-text-1)', lineHeight: 1.15, margin: '0 auto',
-                maxWidth: 600 }}>
+                maxWidth: 600
+              }}>
               Three minutes.<br />Infinite self-awareness.
             </h2>
           </div>
@@ -695,8 +723,10 @@ export default function Landing() {
               Features
             </div>
             <h2 className="font-display font-bold"
-              style={{ fontSize: 'clamp(28px, 4vw, 48px)', letterSpacing: '-0.025em',
-                color: 'var(--color-text-1)', lineHeight: 1.15, margin: 0 }}>
+              style={{
+                fontSize: 'clamp(28px, 4vw, 48px)', letterSpacing: '-0.025em',
+                color: 'var(--color-text-1)', lineHeight: 1.15, margin: 0
+              }}>
               Built to understand you.
             </h2>
           </div>
@@ -755,12 +785,16 @@ export default function Landing() {
                 Real insights
               </div>
               <h2 className="font-display font-bold"
-                style={{ fontSize: 'clamp(24px, 3.5vw, 40px)', letterSpacing: '-0.025em',
-                  color: 'var(--color-text-1)', lineHeight: 1.2, marginBottom: 20 }}>
+                style={{
+                  fontSize: 'clamp(24px, 3.5vw, 40px)', letterSpacing: '-0.025em',
+                  color: 'var(--color-text-1)', lineHeight: 1.2, marginBottom: 20
+                }}>
                 Patterns you never knew existed.
               </h2>
-              <p style={{ fontSize: 15, color: 'var(--color-text-2)',
-                lineHeight: 1.7, marginBottom: 32, fontFamily: 'var(--font-body)' }}>
+              <p style={{
+                fontSize: 15, color: 'var(--color-text-2)',
+                lineHeight: 1.7, marginBottom: 32, fontFamily: 'var(--font-body)'
+              }}>
                 MindOrb doesn't just store your words — it finds the story behind them.
                 Day-of-week patterns, time-of-day correlations, recurring themes,
                 and your personal cognitive fingerprint.
@@ -776,8 +810,10 @@ export default function Landing() {
                     background: i === 0 ? '#34d399' : i === 1 ? '#7c6af7' : '#fbbf24',
                     marginTop: 6,
                   }} />
-                  <p style={{ fontSize: 13.5, color: 'var(--color-text-2)',
-                    margin: 0, lineHeight: 1.55, fontStyle: 'italic' }}>
+                  <p style={{
+                    fontSize: 13.5, color: 'var(--color-text-2)',
+                    margin: 0, lineHeight: 1.55, fontStyle: 'italic'
+                  }}>
                     {insight}
                   </p>
                 </div>
@@ -787,9 +823,9 @@ export default function Landing() {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
               {[
                 { value: '10', label: 'Words per session' },
-                { value: '8',  label: 'Plutchik emotions' },
-                { value: '7',  label: 'Radar dimensions' },
-                { value: '∞',  label: 'Insights over time' },
+                { value: '8', label: 'Plutchik emotions' },
+                { value: '7', label: 'Radar dimensions' },
+                { value: '∞', label: 'Insights over time' },
               ].map(s => (
                 <div key={s.label} style={{
                   padding: '24px 20px', borderRadius: 16, textAlign: 'center',
@@ -798,8 +834,10 @@ export default function Landing() {
                   backdropFilter: 'blur(8px)',
                 }}>
                   <div className="font-display font-bold"
-                    style={{ fontSize: 40, lineHeight: 1, letterSpacing: '-0.04em',
-                      color: 'var(--color-text-1)', marginBottom: 8 }}>
+                    style={{
+                      fontSize: 40, lineHeight: 1, letterSpacing: '-0.04em',
+                      color: 'var(--color-text-1)', marginBottom: 8
+                    }}>
                     {s.value}
                   </div>
                   <div style={{ fontSize: 12, color: 'var(--color-text-3)', fontWeight: 500 }}>
@@ -832,13 +870,17 @@ export default function Landing() {
               <HeroOrb size={140} />
             </div>
             <h2 className="font-display font-bold"
-              style={{ fontSize: 'clamp(32px, 5vw, 60px)', letterSpacing: '-0.03em',
-                color: 'var(--color-text-1)', lineHeight: 1.1, marginBottom: 20 }}>
+              style={{
+                fontSize: 'clamp(32px, 5vw, 60px)', letterSpacing: '-0.03em',
+                color: 'var(--color-text-1)', lineHeight: 1.1, marginBottom: 20
+              }}>
               Ready to meet your mind?
             </h2>
-            <p style={{ fontSize: 17, color: 'var(--color-text-2)',
+            <p style={{
+              fontSize: 17, color: 'var(--color-text-2)',
               marginBottom: 40, maxWidth: 420, margin: '0 auto 40px',
-              fontFamily: 'var(--font-body)', lineHeight: 1.6 }}>
+              fontFamily: 'var(--font-body)', lineHeight: 1.6
+            }}>
               It takes 3 minutes. No journal required. Just 10 honest words.
             </p>
             {/* Final CTA — auth-aware */}
@@ -852,7 +894,7 @@ export default function Landing() {
                 display: 'inline-flex', alignItems: 'center', gap: 10,
               }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 12px 50px rgba(124,106,247,0.55)' }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)';    e.currentTarget.style.boxShadow = '0 0 40px rgba(124,106,247,0.45)' }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 0 40px rgba(124,106,247,0.45)' }}
               >
                 Go to your dashboard <span style={{ fontSize: 18 }}>→</span>
               </button>
@@ -866,7 +908,7 @@ export default function Landing() {
                 display: 'inline-flex', alignItems: 'center', gap: 10,
               }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 12px 50px rgba(124,106,247,0.55)' }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)';    e.currentTarget.style.boxShadow = '0 0 40px rgba(124,106,247,0.45)' }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 0 40px rgba(124,106,247,0.45)' }}
               >
                 Begin your journey <span style={{ fontSize: 18 }}>→</span>
               </button>
