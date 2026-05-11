@@ -17,21 +17,14 @@ app.set('trust proxy', 1);
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "https://accounts.google.com", "https://connect.facebook.net"],
-      connectSrc: [
-        "'self'",
-        "https://huggingface.co",
-        "https://cdn-lfs.huggingface.co",
-        "https://cas-bridge.xethub.hf.co",
-        "https://*.xethub.hf.co",
-        "https://accounts.google.com",
-        "https://api.anthropic.com",
-      ],
-      frameSrc: ["'self'", "https://accounts.google.com"],
-      imgSrc: ["'self'", "data:", "blob:", "https:"],
-      workerSrc: ["'self'", "blob:"],
-      childSrc: ["'self'", "blob:"],
+      defaultSrc:    ["'self'"],
+      scriptSrc:     ["'self'", "'unsafe-inline'", "https://accounts.google.com", "https://connect.facebook.net", "https://cdn.jsdelivr.net"],
+      scriptSrcElem: ["'self'", "'unsafe-inline'", "https://accounts.google.com", "https://connect.facebook.net", "https://cdn.jsdelivr.net"],
+      connectSrc:    ["'self'", "https://huggingface.co", "https://cdn-lfs.huggingface.co", "https://cas-bridge.xethub.hf.co", "https://*.xethub.hf.co", "https://accounts.google.com", "https://api.anthropic.com", "https://cdn.jsdelivr.net"],
+      frameSrc:      ["'self'", "https://accounts.google.com"],
+      imgSrc:        ["'self'", "data:", "blob:", "https:"],
+      workerSrc:     ["'self'", "blob:"],
+      childSrc:      ["'self'", "blob:"],
     },
   },
 }));
