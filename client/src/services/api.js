@@ -4,7 +4,7 @@ import {Capacitor} from "@capacitor/core"
 function getBaseURL() {
   // Running as native Android/iOS app
   if (Capacitor.isNativePlatform()) {
-    return 'https://stronger-happened-invisible-endorsement.trycloudflare.com/api'
+    return 'https://mindorb.onrender.com/api'
     // Later when you deploy server: return 'https://api.mindorb.com/api'
   }
   // Running in browser (dev or prod web)
