@@ -6,8 +6,8 @@ import { loadModel } from '../services/sentiment'
 const AuthContext = createContext(null)
 
 export function AuthProvider({ children }) {
-  const [user,       setUser]       = useState(null)
-  const [loading,    setLoading]    = useState(true)
+  const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
   const [modelReady, setModelReady] = useState(false)
 
   // ── Pre-warm the sentiment model ────────────────────────────
@@ -37,22 +37,25 @@ export function AuthProvider({ children }) {
     restore()
   }, [warmModel])
 
+  const commitUser = (userData) => {
+    setUser(userData)
+    warmModel()
+  }
+
   // ── Local: signup ───────────────────────────────────────────
   const signup = async (name, email, password) => {
     const { data } = await api.post('/auth/signup', { name, email, password })
     localStorage.setItem('token', data.token)
-    setUser(data.user)
     toast.success(`Welcome to MindOrb, ${name.split(' ')[0]}!`)
-    warmModel()
+    return data   // ← return data, don't setUser yet
   }
 
   // ── Local: login ────────────────────────────────────────────
   const login = async (email, password) => {
     const { data } = await api.post('/auth/login', { email, password })
     localStorage.setItem('token', data.token)
-    setUser(data.user)
     toast.success(`Welcome back, ${data.user.name.split(' ')[0]}!`)
-    warmModel()
+    return data   // ← return data, don't setUser yet
   }
 
   // ── OAuth: shared handler (Google + Facebook) ───────────────
@@ -86,7 +89,7 @@ export function AuthProvider({ children }) {
     <AuthContext.Provider value={{
       user, loading, modelReady,
       signup, login, logout, updateUser,
-      oauthLogin,
+      oauthLogin, commitUser,
     }}>
       {children}
     </AuthContext.Provider>

@@ -171,7 +171,7 @@ function OAuthBlock({ isWorking, gLoading, fbLoading, isSignup, onGoogle, onFace
 export default function Auth() {
   const location = useLocation()
   const navigate = useNavigate()
-  const { login, signup, oauthLogin } = useAuth()
+  const { login, signup, oauthLogin, commitUser } = useAuth()
 
   const [mode, setMode] = useState(location.state?.mode || 'signup')
   const [name, setName] = useState('')
@@ -214,14 +214,20 @@ export default function Auth() {
     }
     setLoading(true)
     try {
-      if (isSignup) await signup(name, email, password)
-      else await login(email, password)
-      setSuccess(true)
-      setTimeout(() => navigate('/dashboard'), 700)
+      const data = isSignup
+        ? await signup(name, email, password)
+        : await login(email, password)
+
+      setLoading(false)
+      setSuccess(true)          // ← green button renders now
+
+      setTimeout(() => {
+        commitUser(data.user)   // ← NOW set user → triggers route guard → redirect
+      }, 900)
+
     } catch (err) {
       const msg = err.response?.data?.message || 'Something went wrong'
       setError(msg); toast.error(msg)
-    } finally {
       setLoading(false)
     }
   }
