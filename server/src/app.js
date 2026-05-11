@@ -1,29 +1,37 @@
 require('dotenv').config();
-const express  = require('express');
-const cors     = require('cors');
-const helmet   = require('helmet');
-const { validateEnv }   = require('./config/env');
-const { errorHandler }  = require('./middleware/error.middleware');
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const { validateEnv } = require('./config/env');
+const { errorHandler } = require('./middleware/error.middleware');
 const { authLimiter, sessionLimiter, apiLimiter } = require('./middleware/rateLimiter');
 
-const path=require("path")
+const path = require("path")
 
 validateEnv();
 
 const app = express();
 
-app.set('trust proxy',1);
+app.set('trust proxy', 1);
 
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
-      defaultSrc:  ["'self'"],
-      scriptSrc:   ["'self'", "'unsafe-inline'", "https://accounts.google.com", "https://connect.facebook.net"],
-      connectSrc:  ["'self'", "https://huggingface.co", "https://cdn-lfs.huggingface.co", "https://accounts.google.com", "https://api.anthropic.com"],
-      frameSrc:    ["'self'", "https://accounts.google.com"],
-      imgSrc:      ["'self'", "data:", "blob:", "https:"],
-      workerSrc:   ["'self'", "blob:"],
-      childSrc:    ["'self'", "blob:"],
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "https://accounts.google.com", "https://connect.facebook.net"],
+      connectSrc: [
+        "'self'",
+        "https://huggingface.co",
+        "https://cdn-lfs.huggingface.co",
+        "https://cas-bridge.xethub.hf.co",
+        "https://*.xethub.hf.co",
+        "https://accounts.google.com",
+        "https://api.anthropic.com",
+      ],
+      frameSrc: ["'self'", "https://accounts.google.com"],
+      imgSrc: ["'self'", "data:", "blob:", "https:"],
+      workerSrc: ["'self'", "blob:"],
+      childSrc: ["'self'", "blob:"],
     },
   },
 }));
@@ -55,7 +63,7 @@ app.use(apiLimiter);
 app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date() }));
 
 // Routes
-app.use('/api/auth',require('./routes/auth.routes'));
+app.use('/api/auth', require('./routes/auth.routes'));
 app.use('/api/sessions', sessionLimiter, require('./routes/session.routes'));
 app.use('/api/insights', require('./routes/insights.routes'));
 app.use('/api/users', require('./routes/user.routes'));
