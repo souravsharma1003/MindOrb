@@ -14,7 +14,19 @@ const app = express();
 
 app.set('trust proxy',1);
 
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc:  ["'self'"],
+      scriptSrc:   ["'self'", "'unsafe-inline'", "https://accounts.google.com", "https://connect.facebook.net"],
+      connectSrc:  ["'self'", "https://huggingface.co", "https://cdn-lfs.huggingface.co", "https://accounts.google.com", "https://api.anthropic.com"],
+      frameSrc:    ["'self'", "https://accounts.google.com"],
+      imgSrc:      ["'self'", "data:", "blob:", "https:"],
+      workerSrc:   ["'self'", "blob:"],
+      childSrc:    ["'self'", "blob:"],
+    },
+  },
+}));
 
 const allowedOrigins = [
   'http://localhost:5173',                              // browser dev
