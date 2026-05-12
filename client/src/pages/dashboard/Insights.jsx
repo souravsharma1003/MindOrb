@@ -307,7 +307,7 @@ export default function Insights() {
                   AI Reflection
                 </div>
                 <p style={{ fontSize: 13, color: 'var(--color-text-2)', lineHeight: 1.7, margin: 0 }}>
-                  {weekly?.reflection || 'Complete at least 2 sessions this week to unlock your reflection.'}
+                  {weekly?.reflection || 'Complete at least 3 sessions this week to unlock your reflection.'}
                 </p>
               </div>
             </div>

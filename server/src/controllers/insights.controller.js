@@ -17,6 +17,9 @@ exports.getWeeklyReflection = async (req, res) => {
     console.log(data)
     res.json(data);
   } catch (err) {
+    if(err.message.includes('at least 3 sessions required')){
+      return res.json({reflection:null,reason:"not_enough_sessions"})
+    }
     res.status(500).json({ message: err.message });
   }
 };
