@@ -45,7 +45,7 @@ function CustomTooltip({ active, payload }) {
   if (!active || !payload?.length) return null
   return (
     <div style={{
-      background: 'rgba(15,15,26,0.97)', border: '1px solid rgba(255,255,255,0.1)',
+      background: 'var(--color-landing-nav)', border: '1px solid var(--color-hover-2)',
       borderRadius: 10, padding: '8px 12px',
     }}>
       <p style={{
@@ -173,10 +173,10 @@ export default function Insights() {
           <SectionHeader title="Positivity trend" />
           <ResponsiveContainer width="100%" height={180}>
             <BarChart data={sentimentBar}>
-              <CartesianGrid stroke="rgba(255,255,255,0.04)" strokeDasharray="0" />
-              <XAxis dataKey="i" tick={{ fontSize: 10, fill: '#52525e' }}
+              <CartesianGrid stroke="var(--color-hover)" strokeDasharray="0" />
+              <XAxis dataKey="i" tick={{ fontSize: 10, fill: 'var(--color-chart-tick)' }}
                 tickLine={false} axisLine={false} />
-              <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: '#52525e' }}
+              <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: 'var(--color-chart-tick)' }}
                 tickLine={false} axisLine={false} tickFormatter={v => `${v}%`} />
               <Tooltip content={<CustomTooltip />} />
               <Bar dataKey="score" radius={[4, 4, 0, 0]} fill="rgba(124,106,247,0.6)" />
@@ -263,10 +263,10 @@ export default function Insights() {
           {cliTrend.length > 0 ? (
             <ResponsiveContainer width="100%" height={170}>
               <BarChart data={cliTrend}>
-                <CartesianGrid stroke="rgba(255,255,255,0.04)" />
-                <XAxis dataKey="i" tick={{ fontSize: 10, fill: '#52525e' }}
+                <CartesianGrid stroke="var(--color-hover)" />
+                <XAxis dataKey="i" tick={{ fontSize: 10, fill: 'var(--color-chart-tick)' }}
                   tickLine={false} axisLine={false} />
-                <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: '#52525e' }}
+                <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: 'var(--color-chart-tick)' }}
                   tickLine={false} axisLine={false} />
                 <Tooltip content={<CustomTooltip />} />
                 <Bar dataKey="index" radius={[4, 4, 0, 0]} fill="rgba(251,191,36,0.6)" />

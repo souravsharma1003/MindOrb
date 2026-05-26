@@ -47,7 +47,7 @@ export function LegalModal({ isOpen, onClose, title, children }) {
         display: 'flex',
         alignItems: 'flex-end',       // anchored to bottom on mobile
         justifyContent: 'center',
-        background: 'rgba(0,0,0,0.7)',
+        background: 'var(--color-modal-bg)',
         backdropFilter: 'blur(6px)',
         WebkitBackdropFilter: 'blur(6px)',
         animation: 'fade-in 0.2s ease both',

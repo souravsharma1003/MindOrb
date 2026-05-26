@@ -86,7 +86,7 @@ function SessionOrb({ emotion, isReacting, breathPhase }) {
       <div style={{
         width: 160, height: 160, borderRadius: '50%',
         background: `radial-gradient(circle at 35% 32%, ${colors.c1} 0%, ${colors.c2} 45%, ${colors.c3} 100%)`,
-        boxShadow: `0 0 80px 20px ${colors.glow}, 0 0 160px 40px ${colors.glow.replace(/[\d.]+\)$/, '0.15)')}, inset 0 1px 0 rgba(255,255,255,0.3)`,
+        boxShadow: `0 0 80px 20px ${colors.glow}, 0 0 160px 40px ${colors.glow.replace(/[\d.]+\)$/, '0.15)')}, inset 0 1px 0 var(--color-white-alpha-30)`,
         transform: `scale(${scale})`,
         transition: 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1), background 1.2s ease, box-shadow 1.2s ease',
         position: 'relative', zIndex: 1,
@@ -94,7 +94,7 @@ function SessionOrb({ emotion, isReacting, breathPhase }) {
         <div style={{
           position: 'absolute', top: '18%', left: '22%',
           width: '30%', height: '20%',
-          background: 'rgba(255,255,255,0.25)',
+          background: 'var(--color-white-alpha-25)',
           borderRadius: '50%', filter: 'blur(6px)',
         }} />
       </div>
@@ -208,7 +208,7 @@ function ResultScreen({ result, isCreator }) {
       }}>
         <div style={{
           position: 'absolute', top: 0, left: 0, right: 0, height: 1,
-          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08) 50%, transparent)',
+          background: 'linear-gradient(90deg, transparent, var(--color-white-alpha-08) 50%, transparent)',
         }} />
 
         {/* FIX: '1fr auto 1fr' stacks on mobile — delta shown inline under second score */}
@@ -294,7 +294,7 @@ function ResultScreen({ result, isCreator }) {
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 8px 1fr', gap: 4, alignItems: 'center' }}>
                 <div style={{
-                  height: 4, background: 'rgba(255,255,255,0.06)',
+                  height: 4, background: 'var(--color-white-alpha-06)',
                   borderRadius: 2, overflow: 'hidden', direction: 'rtl',
                 }}>
                   <div style={{ width: `${myVal}%`, height: '100%', background: 'var(--color-accent)', borderRadius: 2 }} />
@@ -304,7 +304,7 @@ function ResultScreen({ result, isCreator }) {
                   background: 'var(--color-surface-3)',
                   border: '1px solid var(--color-border)', flexShrink: 0,
                 }} />
-                <div style={{ height: 4, background: 'rgba(255,255,255,0.06)', borderRadius: 2, overflow: 'hidden' }}>
+                <div style={{ height: 4, background: 'var(--color-white-alpha-06)', borderRadius: 2, overflow: 'hidden' }}>
                   <div style={{ width: `${theirVal}%`, height: '100%', background: '#34d399', borderRadius: 2 }} />
                 </div>
               </div>

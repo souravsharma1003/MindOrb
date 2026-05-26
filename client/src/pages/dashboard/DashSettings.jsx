@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import { useTheme } from '../../context/ThemeContext'
 import DashboardLayout from '../../components/ui/DashboardLayout'
 import api from '../../services/api'
 import { toast } from '../../components/ui/Toast'
+import { Sun, Moon } from 'lucide-react'
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -20,6 +22,7 @@ const PREF_TIMES = ['morning', 'evening', 'anytime']
 
 export default function DashSettings() {
   const { user, logout, updateUser } = useAuth()
+  const { theme, toggleTheme } = useTheme()
   const navigate = useNavigate()
 
   const [name, setName]       = useState(user?.name || '')
@@ -63,6 +66,75 @@ export default function DashSettings() {
       {/* FIX: added width:'100%' so the container fills correctly on mobile
           instead of potentially overflowing the sidebar gutter */}
       <div style={{ maxWidth: 520, width: '100%' }}>
+
+        {/* Appearance card */}
+        <div className="card" style={{ padding: 24, marginBottom: 14 }}>
+          <div className="font-display font-semibold"
+            style={{ fontSize: 14, color: 'var(--color-text-1)', marginBottom: 16 }}>
+            Appearance
+          </div>
+
+          <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            padding: 14, background: 'var(--color-surface-2)',
+            borderRadius: 12, border: '1px solid var(--color-border)',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div style={{
+                width: 36, height: 36, borderRadius: 10, flexShrink: 0,
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                background: theme === 'dark'
+                  ? 'rgba(124,106,247,0.15)'
+                  : 'rgba(251,191,36,0.15)',
+                color: theme === 'dark' ? 'var(--color-accent-2)' : 'var(--color-amber)',
+                transition: 'all 0.3s ease',
+              }}>
+                {theme === 'dark' ? <Moon size={16} /> : <Sun size={16} />}
+              </div>
+              <div>
+                <div style={{
+                  fontSize: 13, fontWeight: 500, color: 'var(--color-text-1)',
+                  fontFamily: 'var(--font-display)',
+                }}>
+                  {theme === 'dark' ? 'Dark mode' : 'Light mode'}
+                </div>
+                <div style={{ fontSize: 11, color: 'var(--color-text-3)', marginTop: 1 }}>
+                  {theme === 'dark' ? 'Easy on the eyes' : 'Bright and clean'}
+                </div>
+              </div>
+            </div>
+
+            {/* Toggle switch */}
+            <button
+              id="theme-toggle"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              style={{
+                width: 48, height: 26, borderRadius: 13, cursor: 'pointer',
+                border: 'none', position: 'relative', flexShrink: 0,
+                background: theme === 'dark'
+                  ? 'var(--color-accent)'
+                  : 'var(--color-amber)',
+                transition: 'background 0.3s ease',
+              }}
+            >
+              <div style={{
+                width: 20, height: 20, borderRadius: '50%',
+                background: '#fff',
+                position: 'absolute', top: 3,
+                left: theme === 'dark' ? 25 : 3,
+                transition: 'left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                {theme === 'dark'
+                  ? <Moon size={10} style={{ color: 'var(--color-accent)' }} />
+                  : <Sun size={10} style={{ color: 'var(--color-amber)' }} />
+                }
+              </div>
+            </button>
+          </div>
+        </div>
 
         {/* Profile card */}
         <div className="card" style={{ padding: 24, marginBottom: 14 }}>

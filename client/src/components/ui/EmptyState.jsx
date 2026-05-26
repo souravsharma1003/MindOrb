@@ -67,7 +67,7 @@ function EmptyState({ icon, title, subtitle, action, onAction }) {
           style={{
             marginTop: 8, padding: '10px 24px', borderRadius: 10,
             border: 'none', cursor: 'pointer',
-            background: 'var(--color-accent)', color: '#fff',
+            background: 'var(--color-accent)', color: 'var(--color-text-on-accent)',
             fontSize: 13, fontWeight: 600, fontFamily: 'var(--font-display)',
             boxShadow: '0 0 20px rgba(124,106,247,0.3)',
             transition: 'opacity 0.15s',

@@ -11,16 +11,16 @@ import { EMOTION_COLORS, SENTIMENT_CHIP } from '../constants/sessionConstants'
    Design tokens (from handoff)
 ───────────────────────────────────────────────────────────── */
 const T = {
-  bg:      '#08080f',
-  surface: '#0f0f1a',
-  border:  'rgba(255,255,255,0.07)',
-  accent:  '#7c6af7',
-  green:   '#34d399',
-  amber:   '#fbbf24',
-  red:     '#f87171',
-  text1:   'rgba(255,255,255,0.92)',
-  text2:   'rgba(255,255,255,0.55)',
-  text3:   'rgba(255,255,255,0.28)',
+  bg:      'var(--color-bg)',
+  surface: 'var(--color-surface)',
+  border:  'var(--color-border)',
+  accent:  'var(--color-accent)',
+  green:   'var(--color-green)',
+  amber:   'var(--color-amber)',
+  red:     'var(--color-red)',
+  text1:   'var(--color-text-1)',
+  text2:   'var(--color-text-2)',
+  text3:   'var(--color-text-3)',
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -63,11 +63,11 @@ const CSS = `
   .ss-ghost-btn {
     display:flex;align-items:center;justify-content:center;gap:8px;
     padding:12px 22px;border-radius:12px;cursor:pointer;
-    background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);
-    color:rgba(255,255,255,0.6);font-size:13px;font-weight:700;
+    background:var(--color-hover);border:1px solid var(--color-hover-2);
+    color:var(--color-text-2);font-size:13px;font-weight:700;
     font-family:'Outfit',sans-serif;transition:background 0.2s,color 0.2s,transform 0.15s;
   }
-  .ss-ghost-btn:hover{background:rgba(255,255,255,0.09);color:rgba(255,255,255,0.85);transform:translateY(-1px);}
+  .ss-ghost-btn:hover{background:var(--color-shimmer-2);color:var(--color-text-1);transform:translateY(-1px);}
 
   .ss-primary-btn {
     display:flex;align-items:center;justify-content:center;gap:8px;
@@ -83,7 +83,7 @@ const CSS = `
   .ss-chip-wrap:hover .ss-chip-tip { opacity:1;transform:translateY(0); }
 
   .ss-scroll::-webkit-scrollbar { width:3px }
-  .ss-scroll::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.08);border-radius:99px }
+  .ss-scroll::-webkit-scrollbar-thumb { background:var(--color-white-alpha-08);border-radius:99px }
 `
 
 /* ─────────────────────────────────────────────────────────────
@@ -144,7 +144,7 @@ function Ring({ score, color, size = 100, delay = 350 }) {
       {/* Track */}
       <circle
         cx={size / 2} cy={size / 2} r={R}
-        fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth={5}
+        fill="none" stroke="var(--color-hover)" strokeWidth={5}
       />
       {/* Animated arc — 12 o'clock start via transform */}
       <g style={{ transform: 'rotate(-90deg)', transformOrigin: `${size / 2}px ${size / 2}px` }}>
@@ -241,7 +241,7 @@ function AnimBar({ pct, color, delay = 0 }) {
   return (
     <div
       ref={barRef}
-      style={{ height: 4, borderRadius: 99, background: 'rgba(255,255,255,0.06)', overflow: 'hidden' }}
+      style={{ height: 4, borderRadius: 99, background: 'var(--color-white-alpha-06)', overflow: 'hidden' }}
     >
       <div style={{
         height: '100%', width: `${pct}%`, borderRadius: 99, background: color,
@@ -298,7 +298,7 @@ function Journey({ words }) {
               <div className="ss-chip-tip" style={{
                 position: 'absolute', bottom: 'calc(100% + 8px)', left: '50%',
                 transform: 'translateX(-50%) translateY(4px)',
-                background: 'rgba(10,10,18,0.97)', border: '1px solid rgba(255,255,255,0.1)',
+                background: 'var(--color-landing-nav)', border: '1px solid var(--color-hover-2)',
                 borderRadius: 8, padding: '4px 9px', whiteSpace: 'nowrap', zIndex: 20,
                 fontSize: 11, fontWeight: 600, color: c.c1,
                 opacity: 0, transition: 'opacity 0.15s, transform 0.15s',
@@ -313,7 +313,7 @@ function Journey({ words }) {
               {hasRT && (
                 <div style={{
                   width: 3, height: barH, borderRadius: 99, alignSelf: 'flex-end', minHeight: 2,
-                  background: isHigh ? 'rgba(251,191,36,0.55)' : 'rgba(255,255,255,0.14)',
+                  background: isHigh ? 'rgba(251,191,36,0.55)' : 'var(--color-border-2)',
                   marginBottom: 3,
                 }} />
               )}
@@ -356,7 +356,7 @@ async function exportCard(cardRef, fallbackText) {
   try {
     const html2canvas = (await import('html2canvas')).default
     const canvas = await html2canvas(cardRef, {
-      backgroundColor: '#08080f',
+      backgroundColor: 'var(--color-bg)',
       scale: 2,
       useCORS: true,
     })
@@ -558,7 +558,7 @@ export default function StoryScreen({ session, onNewSession, onDashboard }) {
       {/* Scroll progress bar — top edge */}
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 2, zIndex: 50,
-        background: 'rgba(255,255,255,0.04)',
+        background: 'var(--color-hover)',
       }}>
         <div style={{
           height: '100%', background: `linear-gradient(90deg, ${T.accent}, ${colors.c2})`,
@@ -631,7 +631,7 @@ export default function StoryScreen({ session, onNewSession, onDashboard }) {
             <p style={{
               fontFamily: '"Cormorant Garamond", Georgia, serif',
               fontSize: 21, fontStyle: 'italic', fontWeight: 500,
-              lineHeight: 1.78, color: 'rgba(255,255,255,0.78)',
+              lineHeight: 1.78, color: 'var(--color-text-1)',
               maxWidth: 560, margin: '0 auto', letterSpacing: '0.01em',
             }}>
               {typing ? (
@@ -794,7 +794,7 @@ export default function StoryScreen({ session, onNewSession, onDashboard }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
               {[
                 { label: 'Positive', count: posCount, color: T.green },
-                { label: 'Neutral',  count: neuCount, color: '#52525e' },
+                { label: 'Neutral',  count: neuCount, color: T.text3 },
                 { label: 'Negative', count: negCount, color: T.red },
               ].map(({ label, count, color }, idx) => {
                 const pct = Math.round((count / total) * 100)
@@ -842,8 +842,8 @@ export default function StoryScreen({ session, onNewSession, onDashboard }) {
                         display: 'inline-flex', alignItems: 'center', gap: 6,
                         padding: isTop ? '6px 13px 6px 9px' : '4px 11px 4px 8px',
                         borderRadius: 999,
-                        background: isTop ? `${c.c2}22` : 'rgba(255,255,255,0.04)',
-                        border: `1px solid ${isTop ? c.c2 + '55' : 'rgba(255,255,255,0.09)'}`,
+                        background: isTop ? `${c.c2}22` : 'var(--color-icon-bg)',
+                        border: `1px solid ${isTop ? c.c2 + '55' : 'var(--color-shimmer-2)'}`,
                         position: 'relative',
                       }}
                     >
@@ -888,7 +888,7 @@ export default function StoryScreen({ session, onNewSession, onDashboard }) {
                       <div className="ss-chip-tip" style={{
                         position: 'absolute', bottom: 'calc(100% + 7px)', left: '50%',
                         transform: 'translateX(-50%) translateY(4px)',
-                        background: 'rgba(10,10,18,0.97)', border: '1px solid rgba(255,255,255,0.1)',
+                        background: 'var(--color-landing-nav)', border: '1px solid var(--color-hover-2)',
                         borderRadius: 8, padding: '4px 9px', whiteSpace: 'nowrap', zIndex: 30,
                         fontSize: 11, fontWeight: 600, color: c.c1,
                         opacity: 0, transition: 'opacity 0.15s, transform 0.15s',
@@ -953,7 +953,7 @@ export default function StoryScreen({ session, onNewSession, onDashboard }) {
                   <p style={{ fontSize: 16, fontWeight: 900, color: T.amber, lineHeight: 1 }}>
                     {streak}-day streak
                   </p>
-                  <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>
+                  <p style={{ fontSize: 11, color: 'var(--color-white-alpha-35)', marginTop: 4 }}>
                     Return tomorrow to keep it alive
                   </p>
                 </div>
@@ -983,7 +983,7 @@ export default function StoryScreen({ session, onNewSession, onDashboard }) {
           animationDelay: '0.6s', flexShrink: 0,
           padding: '14px 28px', display: 'flex', gap: 10, alignItems: 'center',
           borderTop: `1px solid ${T.border}`,
-          background: 'rgba(8,8,15,0.7)', backdropFilter: 'blur(16px)',
+          background: 'var(--color-overlay)', backdropFilter: 'blur(16px)',
         }}>
           {/* Ghost — secondary action */}
           <button className="ss-ghost-btn" onClick={onNewSession} style={{ flex: 1 }}>
@@ -1001,7 +1001,7 @@ export default function StoryScreen({ session, onNewSession, onDashboard }) {
         <div ref={cardRef} style={{
           position: 'fixed', left: -9999, top: -9999,
           width: 1200, height: 630,
-          background: '#08080f', padding: 64,
+          background: 'var(--color-bg)', padding: 64,
           display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
           fontFamily: "'Outfit', sans-serif",
         }}>
@@ -1014,11 +1014,11 @@ export default function StoryScreen({ session, onNewSession, onDashboard }) {
           {/* Top row */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', position: 'relative' }}>
             <div>
-              <p style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 8 }}>
+              <p style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-white-alpha-25)', marginBottom: 8 }}>
                 MindOrb · Session Report
               </p>
               <p style={{ fontSize: 52, fontWeight: 900, color: scoreColor, lineHeight: 1 }}>{score}</p>
-              <p style={{ fontSize: 16, fontWeight: 600, color: 'rgba(255,255,255,0.5)', marginTop: 6 }}>{mood} · {emotion}</p>
+              <p style={{ fontSize: 16, fontWeight: 600, color: 'var(--color-white-alpha-35)', marginTop: 6 }}>{mood} · {emotion}</p>
             </div>
             <div style={{
               width: 80, height: 80, borderRadius: '50%',
@@ -1031,7 +1031,7 @@ export default function StoryScreen({ session, onNewSession, onDashboard }) {
           <p style={{
             fontFamily: '"Cormorant Garamond", Georgia, serif',
             fontSize: 22, fontStyle: 'italic', lineHeight: 1.7,
-            color: 'rgba(255,255,255,0.72)', maxWidth: 860, position: 'relative',
+            color: 'var(--color-text-1)', maxWidth: 860, position: 'relative',
           }}>
             "{story}"
           </p>
@@ -1050,7 +1050,7 @@ export default function StoryScreen({ session, onNewSession, onDashboard }) {
                 )
               })}
             </div>
-            <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', fontWeight: 600 }}>
+            <p style={{ fontSize: 11, color: 'var(--color-hover-2)', fontWeight: 600 }}>
               {new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
             </p>
           </div>

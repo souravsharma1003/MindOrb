@@ -108,7 +108,7 @@ export default function BreathingScreen({ onComplete }) {
           <div style={{
             width: 130, height: 130, borderRadius: '50%',
             background: 'radial-gradient(circle at 35% 32%, #ddd6fe, #7c6af7 45%, #4f3fb5)',
-            boxShadow: '0 0 60px 15px rgba(124,106,247,0.3), inset 0 1px 0 rgba(255,255,255,0.25)',
+            boxShadow: '0 0 60px 15px rgba(124,106,247,0.3), inset 0 1px 0 var(--color-white-alpha-25)',
             transform: phase === 'inhale' ? 'scale(1.1)' : 'scale(0.92)',
             transition: 'transform 4s cubic-bezier(0.4,0,0.2,1)',
           }} />
@@ -117,7 +117,7 @@ export default function BreathingScreen({ onComplete }) {
             position: 'absolute', inset: 0,
             display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 10,
           }}>
-            <span style={{ fontSize: 38, fontWeight: 800, color: 'rgba(255,255,255,0.92)', lineHeight: 1 }}>
+            <span style={{ fontSize: 38, fontWeight: 800, color: 'var(--color-text-1)', lineHeight: 1 }}>
               {count}
             </span>
           </div>
@@ -139,7 +139,7 @@ export default function BreathingScreen({ onComplete }) {
                 ? 'var(--color-accent)'
                 : dotState === 'active'
                   ? 'rgba(124,106,247,0.75)'
-                  : 'rgba(255,255,255,0.1)'
+                  : 'var(--color-hover-2)'
               const shadow = dotState === 'done'
                 ? '0 0 8px rgba(124,106,247,0.6)'
                 : dotState === 'active'
@@ -157,7 +157,7 @@ export default function BreathingScreen({ onComplete }) {
                   }} />
                   <span style={{
                     fontSize: 9, fontWeight: 700,
-                    color: dotState === 'done' ? 'rgba(124,106,247,0.7)' : 'rgba(255,255,255,0.15)',
+                    color: dotState === 'done' ? 'rgba(124,106,247,0.7)' : 'var(--color-white-alpha-15)',
                     transition: 'color 0.3s',
                   }}>
                     {label}

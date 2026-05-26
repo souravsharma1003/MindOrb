@@ -49,7 +49,7 @@ export default function DuoWaiting({ partnerName, wordsSubmitted = 10 }) {
         alignItems: 'center', justifyContent: 'center',
         height: '100%', gap: 40,
         fontFamily: 'var(--font-display, Outfit, sans-serif)',
-        background: 'var(--color-bg, #08080f)',
+        background: 'var(--color-bg)',
       }}>
 
         {/* ── Orbiting orbs ── */}
@@ -70,7 +70,7 @@ export default function DuoWaiting({ partnerName, wordsSubmitted = 10 }) {
             <div style={{
               width: 48, height: 48, borderRadius: '50%',
               background: 'radial-gradient(circle at 35% 32%, #ddd6fe, #7c6af7 48%, #4f3fb5)',
-              boxShadow: '0 0 32px rgba(124,106,247,0.45), inset 0 1px 0 rgba(255,255,255,0.25)',
+              boxShadow: '0 0 32px rgba(124,106,247,0.45), inset 0 1px 0 var(--color-white-alpha-25)',
               animation: 'dw-breathe 3.2s ease-in-out infinite',
             }} />
           </div>
@@ -82,8 +82,8 @@ export default function DuoWaiting({ partnerName, wordsSubmitted = 10 }) {
           }}>
             <div style={{
               width: 22, height: 22, borderRadius: '50%',
-              background: 'radial-gradient(circle at 35% 32%, rgba(255,255,255,0.35), rgba(255,255,255,0.08))',
-              border: '1px solid rgba(255,255,255,0.2)',
+              background: 'radial-gradient(circle at 35% 32%, var(--color-white-alpha-35), var(--color-white-alpha-08))',
+              border: '1px solid var(--color-white-alpha-20)',
               animation: 'dw-orbit 4s linear infinite',
             }} />
           </div>
@@ -108,14 +108,14 @@ export default function DuoWaiting({ partnerName, wordsSubmitted = 10 }) {
         }}>
           <h2 style={{
             fontSize: 18, fontWeight: 700,
-            color: 'var(--color-text-1, rgba(255,255,255,0.92))',
+            color: 'var(--color-text-1)',
             marginBottom: 8, lineHeight: 1.2,
           }}>
             Waiting for {name}
           </h2>
           <p style={{
             fontSize: 13,
-            color: 'var(--color-text-3, rgba(255,255,255,0.28))',
+            color: 'var(--color-text-3)',
             lineHeight: 1.6,
           }}>
             You're done — sit tight while they finish their round
@@ -126,13 +126,13 @@ export default function DuoWaiting({ partnerName, wordsSubmitted = 10 }) {
         <div style={{
           display: 'flex', alignItems: 'center', gap: 10,
           padding: '10px 20px', borderRadius: 99,
-          background: 'rgba(255,255,255,0.04)',
-          border: '1px solid rgba(255,255,255,0.08)',
+          background: 'var(--color-hover)',
+          border: '1px solid var(--color-white-alpha-08)',
           animation: 'dw-up 0.5s cubic-bezier(0.22,1,0.36,1) 0.2s both',
         }}>
           <span style={{
             fontSize: 12, fontWeight: 600,
-            color: 'var(--color-text-3, rgba(255,255,255,0.28))',
+            color: 'var(--color-text-3)',
           }}>
             {name} is writing
           </span>
@@ -159,7 +159,7 @@ export default function DuoWaiting({ partnerName, wordsSubmitted = 10 }) {
           <p style={{
             fontSize: 11, fontWeight: 700, letterSpacing: '0.1em',
             textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.28)', marginBottom: 4,
+            color: 'var(--color-text-3)', marginBottom: 4,
           }}>
             Your round
           </p>
@@ -170,7 +170,7 @@ export default function DuoWaiting({ partnerName, wordsSubmitted = 10 }) {
             {wordsSubmitted} words
           </p>
           <p style={{
-            fontSize: 11, color: 'rgba(255,255,255,0.28)', marginTop: 4,
+            fontSize: 11, color: 'var(--color-text-3)', marginTop: 4,
           }}>
             submitted
           </p>

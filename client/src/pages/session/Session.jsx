@@ -295,12 +295,12 @@ export default function Session() {
                 {/* Track — center-anchored */}
                 <div style={{
                   height: 4, borderRadius: 99, position: 'relative',
-                  background: 'rgba(255,255,255,0.06)',
+                  background: 'var(--color-white-alpha-06)',
                 }}>
                   {/* Center tick */}
                   <div style={{
                     position: 'absolute', top: -3, left: '50%',
-                    width: 1, height: 10, background: 'rgba(255,255,255,0.15)',
+                    width: 1, height: 10, background: 'var(--color-white-alpha-15)',
                     transform: 'translateX(-50%)',
                   }} />
                   {/* Fill */}
@@ -459,7 +459,7 @@ export default function Session() {
         <div
           className="absolute inset-0 flex items-center justify-center z-50"
           style={{
-            background:    txPhase === 'expanding' ? txColors.glow.replace(/[\d.]+\)$/, '0.08)') : 'rgba(8,8,15,0.72)',
+            background:    txPhase === 'expanding' ? txColors.glow.replace(/[\d.]+\)$/, '0.08)') : 'var(--color-overlay)',
             backdropFilter: txPhase === 'idle' || status === 'submitting' ? 'blur(8px)' : 'none',
             transition: 'background 0.4s ease',
           }}
@@ -483,7 +483,7 @@ export default function Session() {
             <div style={{
               width: 64, height: 64, borderRadius: '50%',
               background: `radial-gradient(circle at 35% 32%, ${txColors.c1}, ${txColors.c2} 48%, ${txColors.c3})`,
-              boxShadow: `0 0 60px 20px ${txColors.glow}, inset 0 1px 0 rgba(255,255,255,0.25)`,
+              boxShadow: `0 0 60px 20px ${txColors.glow}, inset 0 1px 0 var(--color-white-alpha-25)`,
               animation: txPhase === 'idle' ? 'orb-pulse 1.5s ease-in-out infinite' : 'none',
             }} />
           </div>

@@ -9,7 +9,7 @@ const base = {
   fontFamily:   'var(--font-body)',
   fontWeight:    500,
   padding:      '10px 14px',
-  boxShadow:    '0 8px 32px rgba(0,0,0,0.4)',
+  boxShadow:    '0 8px 32px var(--color-toast-bg)',
   // Never overflow on mobile — clamps below 340px on small screens
   maxWidth:     'min(340px, calc(100vw - 32px))',
 }

@@ -64,7 +64,7 @@ function HeroOrb({ size = 220 }) {
       </div>
       <div style={{
         position: 'absolute', top: -18,
-        background: 'rgba(15,15,26,0.9)',
+        background: 'var(--color-landing-nav)',
         border: `1px solid ${e.c2}44`,
         borderRadius: 99, padding: '4px 14px',
         fontSize: 12, fontWeight: 600,
@@ -104,9 +104,9 @@ function Navbar({ user, onLogin, onSignup, onDashboard }) {
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         padding: isMobile ? '0 20px' : '0 48px', height: 64,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        background: scrolled || menuOpen ? 'rgba(8,8,15,0.92)' : 'transparent',
+        background: scrolled || menuOpen ? 'var(--color-landing-nav)' : 'transparent',
         backdropFilter: scrolled || menuOpen ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.07)' : '1px solid transparent',
+        borderBottom: scrolled ? '1px solid var(--color-border)' : '1px solid transparent',
         transition: 'all 0.3s ease',
       }}>
         {/* Logo */}
@@ -241,8 +241,8 @@ function Navbar({ user, onLogin, onSignup, onDashboard }) {
       {isMobile && menuOpen && (
         <div style={{
           position: 'fixed', top: 64, left: 0, right: 0, zIndex: 99,
-          background: 'rgba(8,8,15,0.97)', backdropFilter: 'blur(16px)',
-          borderBottom: '1px solid rgba(255,255,255,0.07)',
+          background: 'var(--color-landing-nav)', backdropFilter: 'blur(16px)',
+          borderBottom: '1px solid var(--color-border)',
           padding: '20px 24px 28px',
           display: 'flex', flexDirection: 'column', gap: 8,
         }}>
@@ -254,7 +254,7 @@ function Navbar({ user, onLogin, onSignup, onDashboard }) {
                 fontSize: 16, color: 'var(--color-text-2)',
                 textDecoration: 'none', fontWeight: 500,
                 padding: '10px 0',
-                borderBottom: '1px solid rgba(255,255,255,0.05)',
+                borderBottom: '1px solid var(--color-border)',
               }}>
               {link}
             </a>
@@ -351,7 +351,7 @@ function FeatureCard({ icon, title, desc, accentColor, delay }) {
         }}>
         <div style={{
           position: 'absolute', top: 0, left: 0, right: 0, height: 1,
-          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08) 30%, rgba(255,255,255,0.13) 50%, rgba(255,255,255,0.08) 70%, transparent)',
+          background: 'linear-gradient(90deg, transparent, var(--color-hover-2) 30%, var(--color-white-alpha-13) 50%, var(--color-hover-2) 70%, transparent)',
         }} />
         {hovered && (
           <div style={{
@@ -399,7 +399,7 @@ function StepCard({ number, title, desc, delay }) {
       }}>
         <div style={{
           position: 'absolute', top: 0, left: 0, right: 0, height: 1,
-          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.07) 50%, transparent)',
+          background: 'linear-gradient(90deg, transparent, var(--color-border) 50%, transparent)',
         }} />
         <div style={{
           width: 36, height: 36, borderRadius: '50%', flexShrink: 0,
@@ -633,7 +633,7 @@ export default function Landing() {
                 fontSize: 15, fontWeight: 500, fontFamily: 'var(--font-display)',
                 transition: 'all 0.2s ease',
               }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'; e.currentTarget.style.color = 'var(--color-text-1)' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--color-white-alpha-25)'; e.currentTarget.style.color = 'var(--color-text-1)' }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--color-border-2)'; e.currentTarget.style.color = 'var(--color-text-2)' }}
               >
                 Sign in
@@ -657,7 +657,7 @@ export default function Landing() {
           </div>
           <div style={{
             width: 1, height: 40,
-            background: 'linear-gradient(180deg, rgba(255,255,255,0.2), transparent)',
+            background: 'linear-gradient(180deg, var(--color-white-alpha-20), transparent)',
           }} />
         </div>
       </section>
@@ -829,8 +829,8 @@ export default function Landing() {
               ].map(s => (
                 <div key={s.label} style={{
                   padding: '24px 20px', borderRadius: 16, textAlign: 'center',
-                  background: 'rgba(8,8,15,0.5)',
-                  border: '1px solid rgba(255,255,255,0.07)',
+                  background: 'var(--color-overlay)',
+                  border: '1px solid var(--color-border)',
                   backdropFilter: 'blur(8px)',
                 }}>
                   <div className="font-display font-bold"

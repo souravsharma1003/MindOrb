@@ -78,7 +78,7 @@ const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null
   return (
     <div style={{
-      background: 'rgba(15,15,26,0.97)', border: '1px solid rgba(255,255,255,0.1)',
+      background: 'var(--color-landing-nav)', border: '1px solid var(--color-hover-2)',
       borderRadius: 10, padding: '10px 14px',
     }}>
       <p style={{ fontSize: 11, color: 'var(--color-text-3)', marginBottom: 4 }}>Day {label}</p>
@@ -231,10 +231,10 @@ export default function Overview() {
           </div>
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={chartData}>
-              <CartesianGrid stroke="rgba(255,255,255,0.04)" strokeDasharray="0" />
-              <XAxis dataKey="i" tick={{ fontSize: 10, fill: '#52525e', fontFamily: 'DM Sans' }}
+              <CartesianGrid stroke="var(--color-hover)" strokeDasharray="0" />
+              <XAxis dataKey="i" tick={{ fontSize: 10, fill: 'var(--color-chart-tick)', fontFamily: 'DM Sans' }}
                 tickLine={false} axisLine={false} />
-              <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: '#52525e' }}
+              <YAxis domain={[0, 100]} tick={{ fontSize: 10, fill: 'var(--color-chart-tick)' }}
                 tickLine={false} axisLine={false} tickFormatter={v => `${v}%`} />
               <Tooltip content={<CustomTooltip />} />
               {user?.baselineScore != null && (
@@ -276,8 +276,8 @@ export default function Overview() {
                   title={s ? `${Math.round(s)}%` : 'No session'}
                   style={{
                     width: 13, height: 13, borderRadius: 3,
-                    background: s ? TEAL_STEPS[idx] : 'rgba(255,255,255,0.04)',
-                    border: '1px solid rgba(255,255,255,0.04)',
+                    background: s ? TEAL_STEPS[idx] : 'var(--color-icon-bg)',
+                    border: '1px solid var(--color-hover)',
                     cursor: 'default', transition: 'transform 0.12s ease',
                   }}
                   onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.5)'}
@@ -317,9 +317,9 @@ export default function Overview() {
                   The fixed 170 value defeated its own purpose on narrow screens. */}
               <ResponsiveContainer width="100%" height={170}>
                 <RadarChart data={radarChartData}>
-                  <PolarGrid stroke="rgba(255,255,255,0.07)" />
+                  <PolarGrid stroke="var(--color-hover-2)" />
                   <PolarAngleAxis dataKey="axis"
-                    tick={{ fontSize: 9, fill: '#52525e', fontFamily: 'DM Sans' }} />
+                    tick={{ fontSize: 9, fill: 'var(--color-chart-tick)', fontFamily: 'DM Sans' }} />
                   <PolarRadiusAxis domain={[0, 100]} tick={false} axisLine={false} />
                   <Radar dataKey="value" stroke="#7c6af7" fill="rgba(124,106,247,0.15)"
                     strokeWidth={1.5} dot={{ r: 3, fill: '#7c6af7' }} />
@@ -364,7 +364,7 @@ export default function Overview() {
               const chipColor = w.sentiment === 'positive' ? '#34d399'
                 : w.sentiment === 'negative' ? '#f87171' : 'var(--color-text-2)'
               const chipBg = w.sentiment === 'positive' ? 'rgba(52,211,153,0.1)'
-                : w.sentiment === 'negative' ? 'rgba(248,113,113,0.1)' : 'rgba(255,255,255,0.05)'
+                : w.sentiment === 'negative' ? 'rgba(248,113,113,0.1)' : 'var(--color-hover)'
               const chipBorder = w.sentiment === 'positive' ? 'rgba(52,211,153,0.2)'
                 : w.sentiment === 'negative' ? 'rgba(248,113,113,0.2)' : 'var(--color-border)'
               return (

@@ -21,9 +21,9 @@ const CSS = `
     border-radius: 8px;
     background: linear-gradient(
       90deg,
-      rgba(255,255,255,0.04) 0%,
-      rgba(255,255,255,0.09) 50%,
-      rgba(255,255,255,0.04) 100%
+      var(--color-shimmer-1) 0%,
+      var(--color-shimmer-2) 50%,
+      var(--color-shimmer-1) 100%
     );
     background-size: 400px 100%;
     animation: sk-shimmer 1.6s ease-in-out infinite;

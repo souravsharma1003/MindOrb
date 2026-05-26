@@ -1,8 +1,10 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext'
+import { useTheme } from '../../context/ThemeContext'
 import {
   LayoutDashboard, History, GitCompare,
   Lightbulb, Settings, LogOut, Zap, Users,
+  Sun, Moon,
 } from 'lucide-react'
 
 // ─── Nav data ────────────────────────────────────────────────────────────────
@@ -36,7 +38,7 @@ function NavItem({ item, active, onClick }) {
         transition: 'all 0.15s ease', position: 'relative',
         fontFamily: 'var(--font-body)',
       }}
-      onMouseEnter={e => { if (!active) e.currentTarget.style.background = 'rgba(255,255,255,0.05)' }}
+      onMouseEnter={e => { if (!active) e.currentTarget.style.background = 'var(--color-hover)' }}
       onMouseLeave={e => { if (!active) e.currentTarget.style.background = 'transparent' }}
     >
       {/* Active indicator bar — left edge */}
@@ -52,7 +54,7 @@ function NavItem({ item, active, onClick }) {
       <div style={{
         width: 30, height: 30, borderRadius: 8, flexShrink: 0,
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        background: active ? 'rgba(124,106,247,0.2)' : 'rgba(255,255,255,0.04)',
+        background: active ? 'rgba(124,106,247,0.2)' : 'var(--color-icon-bg)',
         color: active ? 'var(--color-accent-2)' : 'var(--color-text-2)',
         transition: 'background 0.15s, color 0.15s',
       }}>
@@ -86,6 +88,7 @@ export default function SideBar({ isOpen = true, isMobile = false, onClose = () 
   const navigate  = useNavigate()
   const location  = useLocation()
   const { user, logout } = useAuth()
+  const { theme, toggleTheme } = useTheme()
 
   const initials = user?.name
     ? user.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2)
@@ -142,6 +145,23 @@ export default function SideBar({ isOpen = true, isMobile = false, onClose = () 
               Insight Engine
             </div>
           </div>
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            style={{
+              width: 30, height: 30, borderRadius: 8, cursor: 'pointer',
+              background: 'var(--color-icon-bg)', border: 'none',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              color: theme === 'dark' ? 'var(--color-text-2)' : 'var(--color-amber)',
+              transition: 'all 0.2s ease', flexShrink: 0,
+              marginLeft:30
+            }}
+            onMouseEnter={e => e.currentTarget.style.background = 'var(--color-hover-2)'}
+            onMouseLeave={e => e.currentTarget.style.background = 'var(--color-icon-bg)'}
+          >
+            {theme === 'dark' ? <Moon size={13} /> : <Sun size={13} />}
+          </button>
         </div>
       </div>
 
@@ -204,7 +224,7 @@ export default function SideBar({ isOpen = true, isMobile = false, onClose = () 
           padding: '8px', borderRadius: 10,
           transition: 'background 0.15s',
         }}
-          onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
+          onMouseEnter={e => e.currentTarget.style.background = 'var(--color-hover)'}
           onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
         >
           {/* Avatar */}

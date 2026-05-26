@@ -16,7 +16,7 @@ const STYLES = {
   },
   shine: {
     position: 'absolute', top: 0, left: 0, right: 0, height: 1,
-    background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.08) 50%, transparent)',
+    background: 'linear-gradient(90deg, transparent, var(--color-white-alpha-08) 50%, transparent)',
   },
   tabBar: {
     display: 'flex', background: 'var(--color-surface-2)',

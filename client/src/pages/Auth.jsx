@@ -78,14 +78,14 @@ function PasswordStrength({ password }) {
   const score = getScore(password)
   const colors = ['', '#f87171', '#fbbf24', '#7c6af7', '#34d399']
   const labels = ['', 'Too weak', 'Getting there', 'Almost strong', 'Strong']
-  const color = password ? colors[score] : 'rgba(255,255,255,0.07)'
+  const color = password ? colors[score] : 'var(--color-border)'
 
   return (
     <div className="mt-2">
       <div className="flex gap-1 mb-1.5">
         {[0, 1, 2, 3].map(i => (
           <div key={i} className="flex-1 h-0.5 rounded-full transition-all duration-300"
-            style={{ background: i < score ? color : 'rgba(255,255,255,0.07)' }} />
+            style={{ background: i < score ? color : 'var(--color-border)' }} />
         ))}
       </div>
       {password && (
@@ -123,7 +123,7 @@ const oauthBtnStyle = (disabled) => ({
   width: '100%', display: 'flex', alignItems: 'center',
   justifyContent: 'center', gap: 10,
   padding: '10px 16px', borderRadius: 10,
-  background: 'rgba(255,255,255,0.04)',
+  background: 'var(--color-hover)',
   border: '1px solid var(--color-border)',
   color: 'var(--color-text-1)', fontSize: 13.5, fontWeight: 500,
   fontFamily: 'var(--font-body)', cursor: disabled ? 'not-allowed' : 'pointer',
@@ -139,8 +139,8 @@ function OAuthBlock({ isWorking, gLoading, fbLoading, isSignup, onGoogle, onFace
         onClick={onGoogle}
         disabled={isWorking}
         style={oauthBtnStyle(isWorking)}
-        onMouseEnter={e => { if (!isWorking) e.currentTarget.style.background = 'rgba(255,255,255,0.08)' }}
-        onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}
+        onMouseEnter={e => { if (!isWorking) e.currentTarget.style.background = 'var(--color-hover-2)' }}
+        onMouseLeave={e => { e.currentTarget.style.background = 'var(--color-hover)' }}
       >
         {gLoading
           ? <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -153,8 +153,8 @@ function OAuthBlock({ isWorking, gLoading, fbLoading, isSignup, onGoogle, onFace
         onClick={onFacebook}
         disabled={isWorking}
         style={oauthBtnStyle(isWorking)}
-        onMouseEnter={e => { if (!isWorking) e.currentTarget.style.background = 'rgba(255,255,255,0.08)' }}
-        onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.04)' }}
+        onMouseEnter={e => { if (!isWorking) e.currentTarget.style.background = 'var(--color-hover-2)' }}
+        onMouseLeave={e => { e.currentTarget.style.background = 'var(--color-hover)' }}
       >
         {fbLoading
           ? <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -392,15 +392,15 @@ export default function Auth() {
             <div key={step.n}
               className="flex items-center gap-3 rounded-xl px-4 py-3 transition-all"
               style={{
-                background: i === 0 ? 'rgba(255,255,255,0.07)' : 'rgba(255,255,255,0.025)',
-                border: `1px solid ${i === 0 ? 'rgba(255,255,255,0.12)' : 'var(--color-border)'}`,
+                background: i === 0 ? 'var(--color-border)' : 'var(--color-hover)',
+                border: `1px solid ${i === 0 ? 'var(--color-border-2)' : 'var(--color-border)'}`,
               }}
             >
               <div className="flex items-center justify-center font-display text-xs font-bold flex-shrink-0"
                 style={{
                   width: 24, height: 24, borderRadius: '50%',
-                  background: i === 0 ? '#fff' : 'rgba(255,255,255,0.07)',
-                  color: i === 0 ? '#08080f' : 'var(--color-text-3)',
+                  background: i === 0 ? 'var(--color-text-1)' : 'var(--color-border)',
+                  color: i === 0 ? 'var(--color-bg)' : 'var(--color-text-3)',
                 }}>
                 {step.n}
               </div>

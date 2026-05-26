@@ -38,7 +38,7 @@ export default function NotFound() {
         <h1 style={{
           fontFamily: 'var(--font-display)', fontSize: 'clamp(48px, 10vw, 80px)',
           fontWeight: 900, letterSpacing: '-0.04em',
-          color: 'rgba(255,255,255,0.08)', marginBottom: 8,
+          color: 'var(--color-white-alpha-08)', marginBottom: 8,
           lineHeight: 1,
         }}>
           404

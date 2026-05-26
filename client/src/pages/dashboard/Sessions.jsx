@@ -109,7 +109,7 @@ function SessionDetail({ detail, formatDate, onDelete }) {
       <svg width="100%" viewBox={`0 0 ${W} ${H}`}
         style={{ display: 'block', marginBottom: 8, overflow: 'visible' }}>
         <line x1={pad} y1={zeroY} x2={W - pad} y2={zeroY}
-          stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+          stroke="var(--color-hover-2)" strokeWidth="1" />
         <path d={fillPath} fill="rgba(124,106,247,0.08)" />
         <path d={linePath} fill="none" stroke="#7c6af7"
           strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -259,7 +259,7 @@ function SessionDetail({ detail, formatDate, onDelete }) {
                 >
                   <span style={{
                     fontSize: 10, color: 'var(--color-text-3)',
-                    border: '1px solid rgba(255,255,255,0.15)',
+                    border: '1px solid var(--color-white-alpha-25)',
                     borderRadius: '50%', width: 14, height: 14,
                     display: 'inline-flex', alignItems: 'center',
                     justifyContent: 'center', cursor: 'default', lineHeight: 1,
@@ -272,7 +272,7 @@ function SessionDetail({ detail, formatDate, onDelete }) {
                     borderRadius: 10, zIndex: 50,
                     background: 'var(--color-surface)',
                     border: '1px solid var(--color-border)',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+                    boxShadow: '0 8px 32px var(--color-toast-bg)',
                     fontSize: 11, color: 'var(--color-text-2)', lineHeight: 1.6,
                   }}>
                     <div style={{
@@ -490,7 +490,7 @@ export default function Sessions() {
                     }}
                     onMouseEnter={e => {
                       if (selected !== s._id)
-                        e.currentTarget.style.background = 'rgba(255,255,255,0.03)'
+                        e.currentTarget.style.background = 'var(--color-hover)'
                     }}
                     onMouseLeave={e => {
                       if (selected !== s._id)

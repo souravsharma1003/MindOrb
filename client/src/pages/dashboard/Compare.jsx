@@ -67,14 +67,14 @@ function PickerRow({ session, isSelA, isSelB, onPickA, onPickB }) {
       <div style={{ display: 'flex', gap: 4 }}>
         <button onClick={() => onPickA(session._id)} style={{
           width: 22, height: 22, borderRadius: '50%', border: 'none', cursor: 'pointer',
-          background: isSelA ? 'var(--color-accent)' : 'rgba(255,255,255,0.08)',
+          background: isSelA ? 'var(--color-accent)' : 'var(--color-hover-2)',
           color: isSelA ? '#fff' : 'var(--color-text-3)',
           fontSize: 9, fontWeight: 700, fontFamily: 'var(--font-display)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
         }}>A</button>
         <button onClick={() => onPickB(session._id)} style={{
           width: 22, height: 22, borderRadius: '50%', border: 'none', cursor: 'pointer',
-          background: isSelB ? 'var(--color-green)' : 'rgba(255,255,255,0.08)',
+          background: isSelB ? 'var(--color-green)' : 'var(--color-hover-2)',
           color: isSelB ? '#052e16' : 'var(--color-text-3)',
           fontSize: 9, fontWeight: 700, fontFamily: 'var(--font-display)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -322,9 +322,9 @@ export default function Compare() {
                       Fixed pixel width={200} made the radar overflow on narrow screens. */}
                   <ResponsiveContainer width="100%" height={200}>
                     <RadarChart data={combinedRadar}>
-                      <PolarGrid stroke="rgba(255,255,255,0.07)" />
+                      <PolarGrid stroke="var(--color-hover-2)" />
                       <PolarAngleAxis dataKey="axis"
-                        tick={{ fontSize: 9, fill: '#52525e', fontFamily: 'DM Sans' }} />
+                        tick={{ fontSize: 9, fill: 'var(--color-chart-tick)', fontFamily: 'DM Sans' }} />
                       <PolarRadiusAxis domain={[0, 100]} tick={false} axisLine={false} />
                       <Radar dataKey="A" stroke="#7c6af7" fill="rgba(124,106,247,0.12)"
                         strokeWidth={1.5} dot={{ r: 3, fill: '#7c6af7' }} />
@@ -362,7 +362,7 @@ export default function Compare() {
                           {d.axis}
                         </span>
                         <div style={{
-                          flex: 1, height: 4, background: 'rgba(255,255,255,0.06)',
+                          flex: 1, height: 4, background: 'var(--color-white-alpha-06)',
                           borderRadius: 2, position: 'relative',
                         }}>
                           <div style={{
@@ -374,7 +374,7 @@ export default function Compare() {
                           }} />
                           <div style={{
                             position: 'absolute', top: -4, left: '50%',
-                            width: 1, height: 12, background: 'rgba(255,255,255,0.15)',
+                            width: 1, height: 12, background: 'var(--color-white-alpha-25)',
                           }} />
                         </div>
                         <span className="font-display font-bold"

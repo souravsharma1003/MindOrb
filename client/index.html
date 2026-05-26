@@ -1,5 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
+<script>
+  // FOUC prevention — set theme before any CSS paints
+  (function(){var t=localStorage.getItem('mindorb-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)})();
+</script>
 
 <head>
   <meta charset="UTF-8" />

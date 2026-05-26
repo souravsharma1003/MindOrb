@@ -33,7 +33,7 @@ export default function DashboardLayout({ children, title, subtitle }) {
           onClick={() => setSidebarOpen(false)}
           style={{
             position: 'fixed', inset: 0, zIndex: 40,
-            background: 'rgba(0,0,0,0.55)',
+            background: 'var(--color-overlay)',
             backdropFilter: 'blur(2px)',
           }}
         />
@@ -56,7 +56,7 @@ export default function DashboardLayout({ children, title, subtitle }) {
           alignItems: 'center',
           gap: 12,
           padding: isMobile ? '0 16px' : '0 28px',
-          background: 'rgba(8,8,15,0.8)',
+          background: 'var(--color-topbar-bg)',
           backdropFilter: 'blur(12px)',
           position: 'sticky', top: 0, zIndex: 30,
         }}>

@@ -96,7 +96,7 @@ export default function SessionOrb({ emotion, isReacting, breathPhase }) {
           background: `radial-gradient(circle at 35% 32%, ${colors.c1} 0%, ${colors.c2} 45%, ${colors.c3} 100%)`,
           // FIX: use withAlpha() instead of inline regex — prevents silent
           // boxShadow corruption if glow is ever not an rgba() string
-          boxShadow: `0 0 80px 20px ${colors.glow}, 0 0 160px 40px ${withAlpha(colors.glow, '0.15')}, inset 0 1px 0 rgba(255,255,255,0.3)`,
+          boxShadow: `0 0 80px 20px ${colors.glow}, 0 0 160px 40px ${withAlpha(colors.glow, '0.15')}, inset 0 1px 0 var(--color-white-alpha-30)`,
           transform: `scale(${scale})`,
           transition: 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1)',
           // FIX: will-change promotes this to its own compositor layer,
@@ -114,7 +114,7 @@ export default function SessionOrb({ emotion, isReacting, breathPhase }) {
             left: '22%',
             width: '30%',
             height: '20%',
-            background: 'rgba(255,255,255,0.25)',
+            background: 'var(--color-white-alpha-25)',
             borderRadius: '50%',
             filter: 'blur(6px)',
           }}
