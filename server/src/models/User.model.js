@@ -77,7 +77,7 @@ userSchema.methods.updateStreak = function () {
   } else {
     const last = new Date(this.lastSessionDate);
     last.setHours(0, 0, 0, 0);
-    const diffDays = (today - last) / (1000 * 60 * 60 * 24);
+    const diffDays = Math.round((today - last) / (1000 * 60 * 60 * 24));
 
     if      (diffDays === 1) this.streak += 1;
     else if (diffDays === 0) { /* same day — no change */ }

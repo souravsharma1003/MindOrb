@@ -108,7 +108,6 @@ export default function Overview() {
       .catch(console.error)
       .finally(() => setLoading(false))
   }, [])
-
   // ── ALL hooks must come before any early returns (Rules of Hooks) ──────────
   // Null-guard inside each memo so they're safe to run before data loads.
 
