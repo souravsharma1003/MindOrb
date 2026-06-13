@@ -42,6 +42,7 @@ const userSchema = new mongoose.Schema(
     // ── Profile ────────────────────────────────────────────────
     avatar:          { type: String, default: '' },
     streak:          { type: Number, default: 0  },
+    longestStreak:   { type: Number, default: 0 },
     lastSessionDate: { type: Date,   default: null },
     totalSessions:   { type: Number, default: 0  },
     baselineScore:   { type: Number, default: null },
@@ -68,24 +69,16 @@ userSchema.methods.comparePassword = async function (candidate) {
 };
 
 // ── Streak logic ──────────────────────────────────────────────
-userSchema.methods.updateStreak = function () {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  if (!this.lastSessionDate) {
-    this.streak = 1;
-  } else {
-    const last = new Date(this.lastSessionDate);
-    last.setHours(0, 0, 0, 0);
-    const diffDays = Math.round((today - last) / (1000 * 60 * 60 * 24));
-
-    if      (diffDays === 1) this.streak += 1;
-    else if (diffDays === 0) { /* same day — no change */ }
-    else                     this.streak = 1;
-  }
-
+userSchema.methods.recordSession = function () {
   this.lastSessionDate = new Date();
   this.totalSessions  += 1;
+};
+
+userSchema.methods.incrementStreak = function () {
+  this.streak = (this.streak || 0) + 1;
+  if (this.streak > (this.longestStreak || 0)) {
+    this.longestStreak = this.streak;
+  }
 };
 
 module.exports = mongoose.model('User', userSchema);

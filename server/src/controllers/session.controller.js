@@ -78,7 +78,7 @@ exports.createSession = async (req, res) => {
 
     // ── Update user streak ────────────────────────────────────────
     const user = await User.findById(req.user._id);
-    user.updateStreak();
+    user.recordSession();
     if (!user.baselineScore) user.baselineScore = positivityScore;
     await user.save();
 

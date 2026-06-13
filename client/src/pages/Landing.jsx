@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import { TermsContent } from "../components/ui/TermsContent"
+import { PrivacyContent } from "../components/ui/PrivacyContent"
+import { LegalModal } from "../components/ui/LegalModal"
 
 // ── Emotion colors for orb demo ─────────────────────────────────
 const EMOTION_SEQUENCE = [
@@ -487,6 +490,7 @@ export default function Landing() {
   const { user } = useAuth()
   const goAuth = (mode = 'signup') => navigate('/auth', { state: { mode } })
   const goDashboard = () => navigate('/dashboard')
+  const [legalModal, setLegalModal] = useState(null)
 
   return (
     <div style={{ background: 'var(--color-bg)', minHeight: '100vh', overflowX: 'hidden' }}>
@@ -938,19 +942,38 @@ export default function Landing() {
           Built for minds that want to grow.
         </span>
         <div style={{ display: 'flex', gap: 20 }}>
-          {['Privacy', 'Terms', 'Contact'].map(l => (
-            <span key={l} style={{
+          {[
+            { label: 'Privacy', key: 'privacy' },
+            { label: 'Terms', key: 'terms' },
+          ].map(({ label, key }) => (
+            <span key={label} style={{
               fontSize: 12, color: 'var(--color-text-3)', cursor: 'pointer',
               transition: 'color 0.15s',
             }}
+              onClick={() => key && setLegalModal(key)}
               onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-2)'}
               onMouseLeave={e => e.currentTarget.style.color = 'var(--color-text-3)'}
             >
-              {l}
+              {label}
             </span>
           ))}
         </div>
       </footer>
+      <LegalModal
+        isOpen={legalModal === 'terms'}
+        onClose={() => setLegalModal(null)}
+        title="Terms of Service"
+      >
+        <TermsContent />
+      </LegalModal>
+
+      <LegalModal
+        isOpen={legalModal === 'privacy'}
+        onClose={() => setLegalModal(null)}
+        title="Privacy Policy"
+      >
+        <PrivacyContent />
+      </LegalModal>
     </div>
   )
 }
